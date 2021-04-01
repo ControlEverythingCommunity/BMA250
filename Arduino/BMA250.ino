@@ -5,8 +5,10 @@
 // https://www.controleverything.com/content/Accelorometer?sku=BMA250_I2CS#tabs-0-product_tabset-2
 
 #include <Wire.h>
+//Analog port 4 (A4) = SDA (serial data)
+//Analog port 5 (A5) = SCL (serial clock)
+// BMA250 I2C address is 0x18(24) or 0x19(25)
 
-// BMA250 I2C address is 0x18(24)
 #define Addr 0x18
 
 void setup()
@@ -38,7 +40,7 @@ void setup()
 
 void loop()
 {
-  unsigned int data[0];
+  uint8_t data[6]; //correct type declaration
   // Start I2C Transmission
   Wire.beginTransmission(Addr);
   // Select Data Registers (0x02 − 0x07)
